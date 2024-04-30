@@ -1,0 +1,116 @@
+﻿<Window x:Class="lab04.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab04"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="800">
+    <Grid>
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>-->
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Canvas x:Name="canvas" Background="LightBlue" >
+            <Image x:Name="mainImage" Height="400" MouseLeftButtonDown="myImage_MouseLeftButtonDown" MouseRightButtonDown="myImage_MouseRightButtonDown" MouseMove="myImage_MouseMove"/>
+            <Rectangle x:Name="selectionRect" Stroke="Red" StrokeThickness="2" Visibility="Collapsed"/>
+        </Canvas>
+
+        
+        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1 0 0 0">
+            <StackPanel Orientation="Vertical">
+                <Button Height="30" Margin="5" Padding="5" Click="LoadImage" Content="Load Image"></Button>
+                <Button x:Name="ConvertButton" Height="30" Margin="5" Padding="5" Click="Convert" Content="Convert to HSL"></Button>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="SchemeFirstLetter" Content="R: "/>
+                        <Slider x:Name="SchemeFirstLetterSlider" 
+                            Width="125"
+                            Minimum="-256"
+                            Maximum="256"
+                            Value="0" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            TickPlacement="None"
+                            TickFrequency="1"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="SchemeSecondLetter" Content="G: "/>
+                        <Slider x:Name="SchemeSecondLetterSlider" 
+                            Width="125"
+                            Minimum="-256"
+                            Maximum="256"
+                            Value="0" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            TickPlacement="None"
+                            TickFrequency="1"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="SchemeThirdLetter" Content="B: "/>
+                        <Slider x:Name="SchemeThirdLetterSlider" 
+                            Width="125"
+                            Minimum="-256"
+                            Maximum="256"
+                            Value="0" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            TickPlacement="None"
+                            TickFrequency="1"/>
+                    </StackPanel>
+                </StackPanel>
+                <Button Content="Set" Height="30" Margin="5" Padding="5" Click="SetValuesButton"></Button>
+                <StackPanel>
+                    <Slider x:Name="RedSaturationSlider"
+                            Width="150"
+                            Minimum="-1"
+                            Maximum="1"
+                            Value="0" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            TickPlacement="BottomRight"
+                            TickFrequency="10"/>
+                    <Button Height="60" Margin="5" Padding="5" Click="SpecialRedSaturationClick">
+                        <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="Change selected area's red saturation"></TextBlock>
+                    </Button>
+                </StackPanel>
+                <Button Height="30" Margin="5" Padding="5" Click="Clear" Content="Clear all adjustments"></Button>
+                <Button Height="30" Margin="5" Padding="5" Click="ClearSelection" Content="Clear selection"></Button>
+                <Button Height="30" Margin="5" Padding="5" Click="SaveAs" Content="Save..."/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="X_TextBlock" Text="X: " Grid.Column="0"></TextBlock>
+                    <TextBlock x:Name="Y_TextBlock" Text="Y: " Grid.Column="1"></TextBlock>
+                    <StackPanel Grid.Column="0" Grid.Row="2">
+                        <TextBlock x:Name="R_TextBlock" Text="R: "></TextBlock>
+                        <TextBlock x:Name="G_TextBlock" Text="G: "></TextBlock>
+                        <TextBlock x:Name="B_TextBlock" Text="B: "></TextBlock>
+                    </StackPanel>
+                    <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="---------------------------------"></TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="2">
+                        <TextBlock x:Name="H_TextBlock" Text="H: "></TextBlock>
+                        <TextBlock x:Name="S_TextBlock" Text="S: "></TextBlock>
+                        <TextBlock x:Name="L_TextBlock" Text="L: "></TextBlock>
+                    </StackPanel>
+
+
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
